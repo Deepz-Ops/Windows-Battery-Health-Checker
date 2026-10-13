@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Battery Health Checker</title>
+  <meta name="description" content="PowerShell script that shows your Windows battery health percentage.">
+  <style>
+    :root {
+      --bg: #f6f7f9;
+      --card: #ffffff;
+      --text: #1b1f24;
+      --muted: #5b6672;
+      --accent: #1f6feb;
+      --accent-text: #ffffff;
+      --border: #dde1e6;
+      --code-bg: #eef1f4;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f1216;
+        --card: #171b21;
+        --text: #e8ebef;
+        --muted: #9aa5b1;
+        --accent: #4c8dff;
+        --accent-text: #0b0e12;
+        --border: #2a313a;
+        --code-bg: #1f252d;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.55;
+    }
+    main {
+      width: 100%;
+      max-width: 560px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 32px 28px;
+    }
+    h1 { margin: 0 0 6px; font-size: 1.6rem; }
+    p  { margin: 0 0 16px; }
+    .muted { color: var(--muted); font-size: 0.95rem; }
+    .status {
+      margin: 20px 0;
+      padding: 12px 14px;
+      border-radius: 10px;
+      background: var(--code-bg);
+      font-size: 0.95rem;
+    }
+    .btn {
+      display: inline-block;
+      padding: 12px 22px;
+      border-radius: 10px;
+      background: var(--accent);
+      color: var(--accent-text);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+    h2 { font-size: 1.05rem; margin: 28px 0 8px; }
+    pre {
+      margin: 0 0 12px;
+      padding: 12px 14px;
+      border-radius: 10px;
+      background: var(--code-bg);
+      overflow-x: auto;
+      font-size: 0.88rem;
+    }
+    code { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; }
+    ol { padding-left: 1.2rem; margin: 0; }
+    li { margin-bottom: 6px; }
+    a { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Battery Health Checker</h1>
+    <p class="muted">A PowerShell script that reads your Windows battery report and shows your battery health as a percentage.</p>
+
+    <div class="status" id="status" role="status" aria-live="polite">
+      Click the button below to download the script.
+    </div>
+
+    <a class="btn" id="download" href="battery-health.ps1" download="battery-health.ps1">Download battery-health.ps1</a>
+
+    <h2>How to run it</h2>
+    <ol>
+      <li>Open PowerShell in the folder where the file was saved (usually <em>Downloads</em>).</li>
+      <li>Windows marks downloaded files as untrusted, so unblock it once:
+        <pre><code>Unblock-File .\battery-health.ps1</code></pre>
+      </li>
+      <li>Run it:
+        <pre><code>powershell -ExecutionPolicy Bypass -File .\battery-health.ps1</code></pre>
+      </li>
+    </ol>
+
+    <p class="muted" style="margin-top:20px">
+      Requires Windows 10/11 with an English display language. No administrator rights needed.
+      You can read the script before running it: <a href="battery-health.ps1">view the source</a>.
+    </p>
+  </main>
+
+  <script>
+    (function () {
+      var link = document.getElementById("download");
+      var status = document.getElementById("status");
+
+      // Show a message once the user clicks the button; the browser handles the download itself.
+      link.addEventListener("click", function () {
+        status.textContent = "Downloading battery-health.ps1\u2026 check your Downloads folder.";
+      });
+    })();
+  </script>
+</body>
+</html>
