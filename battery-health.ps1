@@ -5,7 +5,7 @@
 
   Usage (PowerShell):
       .\battery-health.ps1
-      .\battery-health.ps1 -ReportPath "C:\Users\deepan.sivakumar\battery-report.html"
+      .\battery-health.ps1 -ReportPath "C:\Users\<usename>\battery-report.html"
       .\battery-health.ps1 -UseExisting     # parse the existing report, don't regenerate
 
   If scripts are blocked:
