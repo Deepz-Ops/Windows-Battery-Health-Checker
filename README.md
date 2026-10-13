@@ -1,4 +1,4 @@
-# Battery Health Checker
+# Windows Battery Health Checker
 
 A small PowerShell script that generates a Windows battery report and prints your battery's **health percentage**:
 
